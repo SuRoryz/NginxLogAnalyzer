@@ -1,0 +1,144 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/js-cookie@2.2.1/src/js.cookie.min.js" ></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.4/socket.io.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/terminal-js@1.0.2/index.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+        <script src="static/index.js"></script>
+        <link href="static/index.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="navbar">
+
+        </div>
+        <div class="main">
+            <div class="main-wrapper">
+                <div class="main-plots-and-terminal-wrapper">
+                    <div class="main-plots-wrapper">
+                        <div class="main-plots-upper">
+                            <div class="main-plot-small dashitem" id="plot-hits">
+                                <div class="dashname hits">Hits (Total / Today)</div>
+                                <div class="plot-mini-wrapper hits" id="plot-hits-val"></div>
+                            </div>
+                            <div class="main-plot-small dashitem" id="plot-warns">
+                                <div class="dashname warn">Warns (Total / Today)</div>
+                                <div class="plot-mini-wrapper warn" id="plot-warns-val"></div>
+                            </div>
+                            <div class="main-plot-small dashitem" id="plot-flow">
+                                <div class="dashname flow">Band (Total / Today)</div>
+                                <div class="plot-mini-wrapper flow" id="plot-flow-val"></div>
+                            </div>
+                        </div>
+                        <div class="main-plots-footer">
+                            <div class="main-plot-graphic dashitem" id="plot-per-min">
+                                <div class="dashname">Hits</div>
+                                <div class="main-plot-graphic-dashboard hits">
+                                    <div class="dashboard-item selected hits" data-n="h" data-d="60">Hour</div>
+                                    <div class="dashboard-item hits" data-n="d" data-d="1440">Day</div>
+                                    <div class="dashboard-item hits" data-n="m" data-d="43200">30 Days</div>
+                                    <div class="dashboard-item hits" data-n="all" data-d="1600000">All time</div>
+                                </div>
+                                <canvas id="plot-per-min-canvas"></canvas>
+                            </div>
+                            <div class="main-plot-combined dashitem" id="plot-warns">
+                                <div class="main-plot-graphic" id="plot-warns-graphic">
+                                    <div class="dashname">Warns</div>
+                                    <div class="main-plot-graphic-dashboard warns">
+                                        <div class="dashboard-item selected warns" data-n="h" data-d="60">Hour</div>
+                                        <div class="dashboard-item warns" data-n="d" data-d="1440">Day</div>
+                                        <div class="dashboard-item warns" data-n="m" data-d="43200">30 Days</div>
+                                        <div class="dashboard-item warns" data-n="all" data-d="1600000">All time</div>
+                                    </div>
+                                    <canvas id="plot-warns-graphic-canvas"></canvas>
+                                </div>
+                                <div class="main-plot-scroll" id="plot-warns-scroll">
+                                    List
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-terminal-wrapper">
+                        <div id="terminal">
+                            <div class="dashname">Logs</div>
+                            <div id="terminal-navbar">
+                                    <div id="terminal-navbar-config">
+                                        <span id="terminal-navbar-config-label">MAX:</span>
+                                        <input id="terminal-navbar-config-input" value="10">
+                                    </div>
+                                    <div id="terminal-navbar-wrapper">
+                                    {% for server in servers %}
+                                    <div class="terminal-navbar-server">{{server}}</div>
+                                    {% endfor %}
+                                    <div class="terminal-navbar-server selected">ALL</div>
+                                </div>
+                            </div>
+                            <div id="terminal-body">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="main-foot-plots-wrapper">
+                    <div class="main-plot dashitem" id="plot-urls">
+                        <div class="dashname">
+                            <div class="url-top-row-wrapper head" style="width: 100%;">
+                                <div class="url-row-key head">
+                                    URL
+                                </div>
+                                <div class="url-row-count head">
+                                    HIT COUNT
+                                </div>
+                                <div class="url-row-user head">
+                                    TOP IP
+                                </div>
+                                <div class="url-row-user-count head">
+                                    TOP IP HITS
+                                </div>
+                            </div>
+                        </div>
+                        <div class="main-plot-val" id="plot-urls-val"></div>
+                    </div>
+                    <div class="main-plot dashitem" id="plot-ips">
+                        <div class="dashname" style="justify-content: space-between;">
+                            <div class="ips-top-row-wrapper head" style="width: 36%; align-items: center;">
+                                <div class="ips-row-key head">
+                                    URL
+                                </div>
+                                <div class="ips-row-count head">
+                                    HIT COUNT
+                                </div>
+                                <div class="ips-row-warn head">
+                                    WARNS
+                                </div>
+                            </div>
+                            <div id="ips-top-order-wrapper">
+                                <span id="ips-top-order-label">Order by</span>
+                                <div id="ips-top-order-switch">
+                                    <div data-n=false class="switch-item selected">
+                                        Hits
+                                    </div>
+                                    <div data-n=true class="switch-item">
+                                        Warns
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="main-plot-ip-wrapper">
+                            <div class="main-plot-val ips" id="plot-ips-val">
+                            </div>
+                            <div class="main-plot-canvas ips">
+                                <canvas id="plot-ips-canvas"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="footer">
+
+        </div>
+    </body>
+</html>

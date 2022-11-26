@@ -1,0 +1,513 @@
+body {
+    background-color: #554d58;
+    overflow: hidden;
+}
+
+.dashitem {
+    background-color: #2a242d;
+    border-radius: 3px;
+    box-shadow: 1px 1px 16px 4px #0000002e;
+}
+
+.main {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+}
+
+.main-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-width: 1200px;
+    width: 1200px;
+    height: 100%;
+    justify-content: space-between;
+}
+
+.main-plots {
+    width: 60%;
+}
+
+.main-terminal-wrapper {
+    width: 32%;
+    height: 100%;
+}
+
+#terminal {
+    height: 100%;
+    position: relative;
+    user-select: none;
+}
+
+#terminal-navbar {
+    display: flex;
+    height: 2em;
+    background-color: #2a242d;
+}
+
+#terminal-navbar-wrapper {
+    overflow-x: auto;
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+}
+
+#terminal-navbar-config {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 2px solid #0000002e;
+}
+
+#terminal-navbar-config-label {
+    color: white;
+    font-family: Consolas;
+    font-size: 0.7em;
+    padding: 1em;
+}
+    
+
+#terminal-navbar-config-input {
+    width: 90%;
+    outline: none;
+    background-color: inherit;
+    border: none;
+    color: white;
+    font-family: Consolas;
+    font-size: 0.7em;
+}
+
+#terminal-body {
+    background-color: #2a242d;
+    color: white;
+    font-size: 0.8em;
+    height: calc(100% - 5.4em);
+    border-radius: 0 0 3px 3px;
+    font-family: Consolas;
+    overflow-y: auto;
+    padding: 1em 0;
+}
+
+.terminal-message-instance {
+    background-color: #302934;
+    width: calc(100% - 2em);
+    padding: 1em;
+}
+
+.terminal-message-instance:nth-child(2n) {
+    background-color: #2a242d;
+;
+}
+
+.main-plots-and-terminal-wrapper {
+    height: 53%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.main-plots-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 65%;
+    margin-right: 2%;
+}
+
+.main-plots-upper {
+    display: flex;
+    justify-content: space-between;
+    height: 15%;
+    margin-bottom: 5%;
+}
+
+.main-plot-small {
+    display: flex;
+    width: 30%;
+    flex-direction: column;
+    height: 4.5em;
+}
+
+.main-plots-footer {
+    display: flex;
+    justify-content: space-between;
+    height: 80%;
+}
+
+.main-plot-graphic {
+    width: 60%;
+    margin-right: 5%;
+}
+
+.main-plot-combined {
+    width: 40%;
+}
+
+.main-foot-plots-wrapper {
+    display: flex;
+    height: 43%;
+    justify-content: space-between;
+}
+
+#plot-urls {
+    width: 45%;
+}
+
+#plot-errors {
+    width: 20%;
+}
+
+#plot-ips {
+    width: 50%;
+}
+
+#plot-warns-graphic {
+    width: 100%;
+}
+
+#plot-warns-scroll {
+    overflow-y: auto;
+    height: 42%;
+    color: white;
+    font-family: Consolas;
+    font-size: 0.7em;
+}
+
+.terminal-navbar-server {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+    font-weight: 600;
+    color: white;
+    font-family: Consolas;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+    width: inherit;
+}
+
+.terminal-navbar-server.selected {
+    background-color: #4865df;
+}
+
+.terminal-navbar-server:hover {
+    background-color: rgb(95, 25, 42);
+    background-color: #4865df !important
+}
+
+.main-plot-graphic-dashboard {
+    display: flex;
+    height: 7%;
+    align-items: center;
+    color: white;
+    font-family: Consolas;
+    font-weight: 600;
+    border-radius: 3px 3px 0 0;
+}
+
+
+.dashboard-item.selected {
+    background-color: #4865df;
+}
+
+.dashboard-item:hover {
+    background-color: #4865df;
+}
+
+.dashboard-item {
+    width: 25%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+.dashboard-item.warns {
+    font-size: 0.7em;
+}
+
+#plot-per-min-canvas {
+    padding: 1em;
+    height: 360px !important;
+}
+
+#plot-warns-graphic-canvas {
+    padding: 1em;
+    height: 180px !important;
+    width: 100% !important;
+}
+
+.dashname {
+    display: flex;
+    align-items: center;
+    background-color: #4865df;
+    color: #2a242d;
+    font-family: Consolas;
+    font-size: 0.8em;
+    border-radius: 3px 3px 0 0;
+    padding: 0.2em 1em;
+}
+
+.plot-mini-wrapper {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    color: #4865df;
+    font-size: 1.2em;
+    font-family: Consolas;
+    font-weight: 600;
+}
+
+.dashname.hits {
+    background-color: rgb(187 52 85);
+}
+
+.plot-mini-wrapper.hits {
+    color: rgb(187 52 85);
+}
+
+.dashname.warn {
+    background-color: rgb(187 155 52);
+}
+
+.plot-mini-wrapper.warn {
+    color: rgb(187 155 52);
+}
+
+.dashname.flow {
+    background-color: rgb(52 183 187);
+}
+
+.plot-mini-wrapper.flow {
+    color: rgb(52 183 187);
+}
+
+.main-plot-val {
+    overflow-y: auto;
+    height: 90%;
+}
+
+.url-top-row-wrapper {
+    display: flex;
+    font-size: 0.8em;
+    font-family: Consolas;
+    color: white;
+}
+
+.ips-top-row-wrapper {
+    display: flex;
+    font-size: 0.8em;
+    font-family: Consolas;
+    color: white;
+    justify-content: space-between;
+}
+
+.ips-top-row-wrapper.head {
+    align-items: center;
+    color: #2a242d;
+    font-family: Consolas;
+    font-size: 1em;
+}
+
+.url-top-row-wrapper.head {
+    align-items: center;
+    color: #2a242d;
+    font-family: Consolas;
+    font-size: 1em;
+}
+
+.ips-row-key {
+    height: 100%;
+    width: 50%;
+    padding: 0 0.5em;
+    overflow-wrap: anywhere;
+    display: flex;
+    justify-content: end;
+    flex-wrap: wrap;
+}
+
+.ips-row-key.head {
+    justify-content: start;
+}
+
+.ips-row-count {
+    padding: 0 0.5em;
+    width: 10%;
+    display: flex;
+    justify-content: end;
+}
+
+.ips-row-warns {
+    padding: 0 0.5em;
+    width: 10%;
+    display: flex;
+    justify-content: end;
+}
+
+.url-row-key {
+    height: 100%;
+    width: 55%;
+    padding: 0 0.5em;
+    overflow-wrap: anywhere;
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+}
+
+.url-row-key.head {
+    align-items: center;
+    justify-content: start;
+}
+
+.url-row-count {
+    padding: 0 0.5em;
+    width: 10%;
+    display: flex;
+    justify-content: end;
+}
+
+.url-row-count.head {
+    align-items: center;
+    justify-content: center;
+}
+
+.url-row-user {
+    padding: 0 0.5em;
+    width: 23%;
+    display: flex;
+    justify-content: end;
+}
+
+.url-row-user.head {
+    align-items: center;
+    justify-content: center;
+}
+
+.url-row-user-count {
+    width: 10%;
+    display: flex;
+    justify-content: end;
+}
+
+.url-row-user-count.head {
+    align-items: center;
+    justify-content: center;
+}
+
+.dashname.topurl {
+    display: flex;
+}
+
+.main-plot-ip-wrapper {
+    display: flex;
+    height: 100%;
+}
+
+.main-plot-val.ips {
+    width: 40%;
+    overflow-y: auto;
+    height: 90%;
+}
+
+.main-plot-canvas.ips {
+    width: 60%;
+    height: 90%;
+}
+
+#ips-top-order-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: 600;
+}
+
+#ips-top-order-label {
+    padding-right: 1em;
+}
+
+#ips-top-order-switch {
+    display: flex;
+    border-radius: 3px;
+    border: 2px solid #2a242d;
+    width: 7em;
+}
+
+.switch-item {
+    padding: 0.5em 0;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+.switch-item:hover {
+    background-color: #314699;
+}
+
+.switch-item.selected {
+    background-color: #314699;
+}
+
+.log-time {
+    color: #6d6372;
+}
+
+span.log-addr {
+    color: #6a7fa5;
+}
+
+span.log-addr.warn {
+    color: #bb3455;
+}
+
+span.log-url {
+    color: #bb9b34;
+}
+
+span.log-method {
+    color: #34b7bb;
+}
+
+span.log-protocol {
+    color: #8d8d8d;
+}
+
+span.log-status {
+    color: #73788d;
+}
+
+.log-part {
+    cursor: pointer;
+}
+
+.log-part:hover {
+    background-color: #6d6372;
+}
+
+
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: none;
+    scrollbar-color: #2a242d #302934;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 11px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #302934;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #2a242d;
+    border-radius: 5px;
+    border: 0px solid #864646;
+  }
